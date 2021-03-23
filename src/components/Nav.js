@@ -1,0 +1,134 @@
+import { useState } from 'react';
+
+import { Link } from 'react-router-dom';
+
+import styled, { css } from 'styled-components';
+
+import logoDesktop from '../assets/logo.svg';
+import logoMobile from '../assets/logoMobile.svg';
+import iconBurger from '../assets/shared/mobile/icon-hamburger.svg';
+import iconClose from '../assets/shared/mobile/icon-close.svg';
+
+const NavWrapper = styled.nav`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const Logo = styled.div`
+    background-image: url(${logoDesktop});
+    cursor: pointer;
+    z-index: 2;
+    width: 236px;
+    height: 26px;
+    @media (max-width: 850px) {
+        background-image: url(${logoMobile});
+        width: 163px;
+        height: 18px;
+    }
+`;
+
+const NavList = styled.ul`
+    display: flex;
+    opacity: 1;
+    width: 300px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    justify-content: space-between;
+    color: hsl(215, 5%, 54%);
+    list-style: none;
+    & li {
+        cursor: pointer;
+        & a {
+            transition: 0.1s;
+            text-decoration: none;
+            color: inherit;
+            &:hover {
+                color: hsl(215, 19%, 25%);
+            }
+        }
+    }
+    @media (max-width: 850px) {
+        visibility: hidden;
+        opacity: 0;
+        ${({ isOpen }) =>
+            isOpen &&
+            css`
+                visibility: visible;
+                opacity: 1;
+            `}
+        transition: 0.4s;
+        position: absolute;
+        height: 100vh;
+        padding: 200px 0;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column-reverse;
+        transform: translate(-50%, -50%) rotate(180deg);
+        width: 100vw;
+        top: 50%;
+        left: 50%;
+        background: linear-gradient(
+            180deg,
+            rgba(254, 252, 247, 0.504981) 0%,
+            #fefcf7 55.94%
+        );
+        & li {
+            font-family: 'Fraunces', serif;
+            color: hsl(215, 19%, 25%);
+            margin-top: 25px;
+            transform: rotate(180deg);
+            font-size: 2.4rem;
+        }
+    }
+`;
+
+const Burger = styled.button`
+    transition: 0.1s;
+    display: none;
+    border: none;
+    @media (max-width: 850px) {
+        z-index: 2;
+        display: block;
+        width: 16px;
+        height: 15px;
+        background: url(${({ isOpen }) => (isOpen ? iconClose : iconBurger)})
+            no-repeat center;
+    }
+`;
+
+function Nav() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleNavBtns = () => setIsOpen(false);
+
+    return (
+        <NavWrapper>
+            <Logo onClick={handleNavBtns} />
+            <Burger
+                isOpen={isOpen}
+                onClick={() => setIsOpen((prev) => !prev)}
+            />
+            <NavList isOpen={isOpen}>
+                <li>
+                    <Link onClick={handleNavBtns} to='/'>
+                        home
+                    </Link>
+                </li>
+                <li>
+                    <Link onClick={handleNavBtns} to='/aboutus'>
+                        about us
+                    </Link>
+                </li>
+                <li>
+                    <Link onClick={handleNavBtns} to='/create-your-plan'>
+                        create your plan
+                    </Link>
+                </li>
+            </NavList>
+        </NavWrapper>
+    );
+}
+
+export default Nav;
