@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import GlobalStyle from './styles/GlobalStyle';
+import Home from './pages/home/Home';
+import Nav from './components/Nav';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const Wrapper = styled.div`
+        display: flex;
+        flex-direction: column;
+        padding: 40px 310px 100px 310px;
+        min-height: 250vh;
+        @media (max-width: 1650px) {
+            padding: 40px 25px 40px 25px;
+        }
+    `;
+
+    return (
+        <Router>
+            <Wrapper>
+                <GlobalStyle />
+                <Nav />
+                <Home />
+            </Wrapper>
+        </Router>
+    );
 }
 
 export default App;

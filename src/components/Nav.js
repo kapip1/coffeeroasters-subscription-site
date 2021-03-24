@@ -59,7 +59,7 @@ const NavList = styled.ul`
                 opacity: 1;
             `}
         transition: 0.4s;
-        position: absolute;
+        position: fixed;
         height: 100vh;
         padding: 200px 0;
         justify-content: flex-start;
@@ -110,7 +110,7 @@ function Nav() {
                 isOpen={isOpen}
                 onClick={() => setIsOpen((prev) => !prev)}
             />
-            <NavList isOpen={isOpen}>
+            <NavList isOpen={isOpen} onClick={handleNavBtns}>
                 <li>
                     <Link onClick={handleNavBtns} to='/'>
                         home

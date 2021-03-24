@@ -1,0 +1,26 @@
+import React from 'react';
+
+import styled from 'styled-components';
+
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import Whyus from './Whyus';
+
+const HomeWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+function Home() {
+    return (
+        <HomeWrapper>
+            <Header />
+            <Main />
+            <Whyus />
+            <Footer />
+        </HomeWrapper>
+    );
+}
+
+export default Home;
