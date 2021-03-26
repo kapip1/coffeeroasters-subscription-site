@@ -6,7 +6,7 @@ import { AppContext } from '../../AppContext';
 
 import Header from './Header';
 import Main from './Main';
-import Footer from './Footer';
+import Footer from '../../components/Footer';
 
 const HomeWrapper = styled.div`
     display: flex;

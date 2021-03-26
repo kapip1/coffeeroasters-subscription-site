@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import About from './pages/about/About';
 import AppProvider from './AppContext';
 import GlobalStyle from './styles/GlobalStyle';
-import Home from './pages/home/Home';
 import Nav from './components/Nav';
+import Home from './pages/home/Home';
 
 function App() {
     const Wrapper = styled.div`
@@ -23,7 +24,10 @@ function App() {
                 <Wrapper>
                     <GlobalStyle />
                     <Nav />
-                    <Home />
+                    <Switch>
+                        <Route path='/' exact component={Home} />
+                        <Route path='/aboutus' component={About} />
+                    </Switch>
                 </Wrapper>
             </AppProvider>
         </Router>

@@ -3,11 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import logoFooter from '../../assets/logoFooter.svg';
+import logoFooter from '../assets/logoFooter.svg';
 
-import facebookIcon from '../../assets/shared/desktop/icon-facebook.svg';
-import instagramIcon from '../../assets/shared/desktop/icon-instagram.svg';
-import twitterIcon from '../../assets/shared/desktop/icon-twitter.svg';
+import facebookIcon from '../assets/shared/desktop/icon-facebook.svg';
+import instagramIcon from '../assets/shared/desktop/icon-instagram.svg';
+import twitterIcon from '../assets/shared/desktop/icon-twitter.svg';
 
 const FooterWrapper = styled.footer`
     display: flex;
