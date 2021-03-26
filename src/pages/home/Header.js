@@ -44,11 +44,13 @@ const HeroText = styled.p`
     margin-top: 30px;
     font-size: 1.6rem;
     color: hsl(215, 5%, 54%);
+    max-width: 398px;
+    width: 90%;
     @media (max-width: 768px) {
         text-align: center;
     }
 `;
-const HeroButton = styled.button`
+export const HeroButton = styled.button`
     font-family: 'Fraunces', serif;
     cursor: pointer;
     transition: 0.1s;
@@ -80,10 +82,9 @@ function Header() {
                 Great coffe <BR /> made simple.
             </HeroTitle>
             <HeroText>
-                Start your mornings with the world’s best coffees. Try our{' '}
-                <BR />
-                expertly curated artisan coffees from our best roasters <BR />
-                delivered directly to your door, at your schedule. <BR />
+                Start your mornings with the world’s best coffees. Try our
+                expertly curated artisan coffees from our best roasters
+                delivered directly to your door, at your schedule.
             </HeroText>
             <HeroButton>
                 <Link to='/create-your-plan'>Create your plan</Link>

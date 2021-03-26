@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import AppProvider from './AppContext';
 import GlobalStyle from './styles/GlobalStyle';
 import Home from './pages/home/Home';
 import Nav from './components/Nav';
@@ -11,7 +12,6 @@ function App() {
         display: flex;
         flex-direction: column;
         padding: 40px 310px 100px 310px;
-        min-height: 250vh;
         @media (max-width: 1650px) {
             padding: 40px 25px 40px 25px;
         }
@@ -19,11 +19,13 @@ function App() {
 
     return (
         <Router>
-            <Wrapper>
-                <GlobalStyle />
-                <Nav />
-                <Home />
-            </Wrapper>
+            <AppProvider>
+                <Wrapper>
+                    <GlobalStyle />
+                    <Nav />
+                    <Home />
+                </Wrapper>
+            </AppProvider>
         </Router>
     );
 }

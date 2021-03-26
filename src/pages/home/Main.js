@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Collenction from './Collenction';
 import Whyus from './Whyus';
+import HowItWorks from './HowItWorks';
 
 const MainWrapper = styled.main`
     display: flex;
@@ -15,6 +16,7 @@ function Main() {
         <MainWrapper>
             <Collenction />
             <Whyus />
+            <HowItWorks />
         </MainWrapper>
     );
 }

@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import styled, { css } from 'styled-components';
+
+import { AppContext } from '../AppContext';
 
 import logoDesktop from '../assets/logo.svg';
 import logoMobile from '../assets/logoMobile.svg';
@@ -59,7 +61,7 @@ const NavList = styled.ul`
                 opacity: 1;
             `}
         transition: 0.4s;
-        position: fixed;
+        position: absolute;
         height: 100vh;
         padding: 200px 0;
         justify-content: flex-start;
@@ -99,32 +101,23 @@ const Burger = styled.button`
 `;
 
 function Nav() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleNavBtns = () => setIsOpen(false);
+    const { isOpen, handleBurgerClick, handleNavClick } = useContext(
+        AppContext
+    );
 
     return (
         <NavWrapper>
-            <Logo onClick={handleNavBtns} />
-            <Burger
-                isOpen={isOpen}
-                onClick={() => setIsOpen((prev) => !prev)}
-            />
-            <NavList isOpen={isOpen} onClick={handleNavBtns}>
-                <li>
-                    <Link onClick={handleNavBtns} to='/'>
-                        home
-                    </Link>
+            <Logo onClick={handleNavClick} />
+            <Burger isOpen={isOpen} onClick={handleBurgerClick} />
+            <NavList isOpen={isOpen}>
+                <li onClick={handleNavClick}>
+                    <Link to='/'>home</Link>
                 </li>
-                <li>
-                    <Link onClick={handleNavBtns} to='/aboutus'>
-                        about us
-                    </Link>
+                <li onClick={handleNavClick}>
+                    <Link to='/aboutus'>about us</Link>
                 </li>
-                <li>
-                    <Link onClick={handleNavBtns} to='/create-your-plan'>
-                        create your plan
-                    </Link>
+                <li onClick={handleNavClick}>
+                    <Link to='/create-your-plan'>create your plan</Link>
                 </li>
             </NavList>
         </NavWrapper>

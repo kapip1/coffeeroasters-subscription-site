@@ -11,10 +11,16 @@ import twitterIcon from '../../assets/shared/desktop/icon-twitter.svg';
 
 const FooterWrapper = styled.footer`
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: hsl(215, 19%, 25%);
     border-radius: 12px;
     padding: 40px;
-    justify-content: space-between;
+    @media (max-width: 1100px) {
+        min-height: 250px;
+        flex-direction: column;
+        align-content: space-between;
+    }
 `;
 
 const FooterLogo = styled.div`
@@ -44,6 +50,7 @@ const FooterSocial = styled.li`
 const FooterNavList = styled.ul`
     display: flex;
     align-items: center;
+    transition: 0.1s;
     justify-content: space-between;
     width: 283px;
     list-style: none;
@@ -52,14 +59,22 @@ const FooterNavList = styled.ul`
     & a {
         text-decoration: none;
         color: hsl(215, 5%, 54%);
+        &:hover {
+            color: hsl(43, 78%, 98%);
+        }
+    }
+    @media (max-width: 550px) {
+        justify-content: space-around;
+        flex-direction: column;
+        height: 70px;
     }
 `;
 
 function Footer() {
     return (
         <FooterWrapper>
+            <FooterLogo />
             <FooterNav>
-                <FooterLogo />
                 <FooterNavList>
                     <li>
                         <Link to='/'>home</Link>

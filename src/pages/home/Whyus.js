@@ -37,13 +37,12 @@ const ContentTitle = styled.span`
     color: hsl(43, 78%, 98%);
     margin-bottom: 25px;
 `;
-const BR = styled.span`
-    display: block;
-`;
 
 const ContentText = styled.p`
     color: hsl(215, 5%, 54%);
     line-height: 24px;
+    width: 90%;
+    max-width: 556px;
 `;
 
 const BenefitsWrapper = styled.div`
@@ -118,10 +117,9 @@ function Whyus() {
                 <ContentTitle>Why choose us?</ContentTitle>
                 <ContentText>
                     A large part of our role is choosing which particular
-                    coffees will be featured <BR />
-                    in our range. This means working closely with the best
-                    coffee growers to give
-                    <BR /> you a more impactful experience on every level.
+                    coffees will be featured in our range. This means working
+                    closely with the best coffee growers to give you a more
+                    impactful experience on every level.
                 </ContentText>
             </ContentWrapper>
             <BenefitsWrapper>
