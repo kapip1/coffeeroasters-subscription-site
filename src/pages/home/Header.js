@@ -23,7 +23,7 @@ const HeaderWrapper = styled.header`
         background-size: cover;
         padding: 100px 35px;
     }
-    @media (max-width: 550px) {
+    @media (max-width: 780px) {
         align-items: center;
         background: url(${headerHeroMobile}) center no-repeat;
         background-size: cover;

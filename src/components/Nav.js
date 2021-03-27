@@ -68,7 +68,7 @@ const NavList = styled.ul`
         align-items: center;
         flex-direction: column-reverse;
         transform: translate(-50%, -50%) rotate(180deg);
-        width: 100vw;
+        width: 100%;
         top: 50%;
         left: 50%;
         background: linear-gradient(
