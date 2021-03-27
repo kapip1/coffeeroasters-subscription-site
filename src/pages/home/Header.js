@@ -69,6 +69,7 @@ export const HeroButton = styled.button`
     & a {
         color: inherit;
         text-decoration: none;
+        padding: 15px 32px;
     }
 `;
 const BR = styled.span`

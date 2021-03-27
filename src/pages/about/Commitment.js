@@ -14,6 +14,7 @@ const CommitmentWrapper = styled.div`
     }
     @media (max-width: 750px) {
         flex-direction: column;
+        align-items: center;
         width: 100%;
     }
 `;
