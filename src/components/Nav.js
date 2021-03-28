@@ -19,12 +19,14 @@ const NavWrapper = styled.nav`
 
 const Logo = styled.div`
     background-image: url(${logoDesktop});
+    z-index: 3;
     cursor: pointer;
-    z-index: 2;
     width: 236px;
     height: 26px;
     @media (max-width: 850px) {
         background-image: url(${logoMobile});
+        position: absolute;
+        transform: translateY(-55%);
         width: 163px;
         height: 18px;
     }
@@ -107,7 +109,9 @@ function Nav() {
 
     return (
         <NavWrapper>
-            <Logo onClick={handleNavClick} />
+            <Link to='/'>
+                <Logo onClick={handleNavClick} isOpen={isOpen} />
+            </Link>
             <Burger isOpen={isOpen} onClick={handleBurgerClick} />
             <NavList isOpen={isOpen}>
                 <li onClick={handleNavClick}>

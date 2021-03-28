@@ -16,7 +16,7 @@ const HowItWorksWrapper = styled.div`
         align-items: center;
     }
 `;
-const HowItWorksTitle = styled.span`
+export const HowItWorksTitle = styled.span`
     font-size: 2.4rem;
     font-weight: 700;
     color: hsl(215, 5%, 54%);
@@ -27,7 +27,7 @@ const HowItWorksTitle = styled.span`
     }
 `;
 
-const HowItWorksBar = styled.div`
+export const HowItWorksBar = styled.div`
     display: flex;
     position: relative;
     height: 3px;
@@ -72,7 +72,7 @@ const HowItWorksBar = styled.div`
         display: none;
     }
 `;
-const HowItWorksContentSection = styled.div`
+export const HowItWorksContentSection = styled.div`
     display: flex;
     justify-content: space-between;
     @media (max-width: 750px) {
@@ -81,7 +81,7 @@ const HowItWorksContentSection = styled.div`
     }
 `;
 
-const HowItWorksContent = styled.div`
+export const HowItWorksContent = styled.div`
     display: flex;
     min-height: 355px;
     justify-content: space-around;
@@ -93,21 +93,21 @@ const HowItWorksContent = styled.div`
     }
 `;
 
-const ContentNumber = styled.span`
+export const ContentNumber = styled.span`
     font-size: 7.2rem;
     color: hsl(25, 94%, 86%);
     font-weight: 700;
     font-family: 'Fraunces', serif;
 `;
 
-const ContentTitle = styled.span`
+export const ContentTitle = styled.span`
     font-family: 'Fraunces', serif;
     font-size: 3.2rem;
     font-weight: 700;
     color: hsl(215, 19%, 25%);
 `;
 
-const ContentText = styled.p`
+export const ContentText = styled.p`
     font-size: 1.6rem;
     color: hsl(215, 19%, 25%);
 `;

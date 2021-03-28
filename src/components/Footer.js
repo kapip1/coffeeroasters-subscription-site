@@ -73,7 +73,9 @@ const FooterNavList = styled.ul`
 function Footer() {
     return (
         <FooterWrapper>
-            <FooterLogo />
+            <Link to='/'>
+                <FooterLogo />
+            </Link>
             <FooterNav>
                 <FooterNavList>
                     <li>

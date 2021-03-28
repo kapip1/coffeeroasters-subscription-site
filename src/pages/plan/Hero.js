@@ -30,7 +30,6 @@ const HeroContent = styled.div`
     display: flex;
     flex-direction: column;
     width: 450px;
-
     @media (max-width: 750px) {
         width: 279px;
     }
