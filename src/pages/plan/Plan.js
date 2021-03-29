@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Hero from './Hero';
+import Footer from '../../components/Footer';
 import Steps from './Steps';
 import CreatePlanPanel from './CreatePlanPanel';
 import CreatePlanSteps from './CreatePlanSteps';
@@ -34,7 +35,7 @@ function Plan() {
                     <CreatePlanSteps />
                 </CreatePlanWrapper>
             </main>
-            <footer></footer>
+            <Footer />
         </PlanWrapper>
     );
 }

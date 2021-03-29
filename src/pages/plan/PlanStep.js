@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { AppContext } from '../../AppContext';
 
 import planIcon from '../../assets/plan/desktop/icon-arrow.svg';
 
 const PlanStepWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 `;
 
 const PlanStepInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 730px;
+    width: 100%;
     & div {
-        transform: rotate(
-            ${({ isStepOpen }) => (isStepOpen ? '180deg' : '0deg')}
-        );
+        transform: rotate(${({ data }) => (data.open ? '180deg' : '0deg')});
+        @media (max-width: 750px) {
+            transform: rotate(180deg);
+        }
     }
     @media (max-width: 750px) {
         width: 325px;
@@ -43,10 +46,12 @@ const PlanStepTitle = styled.span`
 `;
 
 const PlanStepSection = styled.div`
-    display: flex;
+    display: ${({ data }) =>
+        data.open && data.block === false ? 'flex' : 'none'};
     justify-content: space-between;
     margin-top: 30px;
     @media (max-width: 750px) {
+        display: flex;
         flex-direction: column;
         align-items: center;
         text-align: start;
@@ -62,11 +67,18 @@ const Step = styled.div`
     width: 228px;
     height: 250px;
     border-radius: 12px;
-    background-color: #f4f1eb;
+    ${({ option, optionNumber }) =>
+        option === optionNumber
+            ? css`
+                  background-color: hsl(179, 81%, 29%);
+              `
+            : css`
+                  background-color: #f4f1eb;
+                  &:hover {
+                      background-color: hsl(25, 94%, 86%);
+                  }
+              `};
     color: hsl(215, 19%, 25%);
-    &:hover {
-        background-color: hsl(25, 94%, 86%);
-    }
     @media (max-width: 750px) {
         margin-top: 30px;
         width: 100%;
@@ -75,7 +87,7 @@ const Step = styled.div`
 `;
 
 const StepTitle = styled.span`
-    font-size: 2.4rem;
+    font-size: 2.38rem;
     font-weight: 700;
     font-family: 'Fraunces', serif;
 `;
@@ -85,18 +97,30 @@ const StepText = styled.p`
     font-size: 1.6rem;
 `;
 
-function PlanStep({ store }) {
-    const [isStepOpen, setIsStepOpen] = useState(true);
+function PlanStep({ store, data }) {
+    const [option, setOption] = useState(0);
 
+    const handleStepClick = (option, id) => {
+        getOption(option, id);
+        setOption(option);
+    };
+
+    const { getOption } = useContext(AppContext);
+    console.log(option, 'opcja');
     return (
         <PlanStepWrapper>
-            <PlanStepInfo isStepOpen={isStepOpen}>
+            <PlanStepInfo data={data}>
                 <PlanStepTitle>{store.title}</PlanStepTitle>
                 <PlanStepIcon />
             </PlanStepInfo>
-            <PlanStepSection>
-                {store.steps.map((step) => (
-                    <Step key={step.title}>
+            <PlanStepSection data={data}>
+                {store.steps.map((step, i) => (
+                    <Step
+                        key={step.title}
+                        onClick={() => handleStepClick(i + 1, store.id)}
+                        option={option}
+                        optionNumber={i + 1}
+                    >
                         <StepTitle>{step.title}</StepTitle>
                         <StepText>{step.text}</StepText>
                     </Step>

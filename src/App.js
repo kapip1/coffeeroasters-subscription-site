@@ -11,23 +11,22 @@ import Plan from './pages/plan/Plan';
 import Nav from './components/Nav';
 import Home from './pages/home/Home';
 
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    ${({ isOpen }) =>
+        isOpen &&
+        css`
+            height: 100vh;
+            overflow: hidden;
+        `}
+    padding: 40px 310px 100px 310px;
+    @media (max-width: 1650px) {
+        padding: 40px 25px 40px 25px;
+    }
+`;
 function App() {
     const { isOpen } = useContext(AppContext);
-
-    const Wrapper = styled.div`
-        display: flex;
-        flex-direction: column;
-        ${({ isOpen }) =>
-            isOpen &&
-            css`
-                height: 100vh;
-                overflow: hidden;
-            `}
-        padding: 40px 310px 100px 310px;
-        @media (max-width: 1650px) {
-            padding: 40px 25px 40px 25px;
-        }
-    `;
 
     return (
         <Router>

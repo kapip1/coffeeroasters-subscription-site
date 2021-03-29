@@ -1,6 +1,7 @@
 export const store = [
     {
         title: 'How do you drink your coffee',
+        id: 1,
         steps: [
             {
                 title: 'Capsule',
@@ -20,6 +21,7 @@ export const store = [
     },
     {
         title: 'What type of coffee?',
+        id: 2,
         steps: [
             {
                 title: 'Single Origin',
@@ -40,6 +42,7 @@ export const store = [
     },
     {
         title: 'How much would you like?',
+        id: 3,
         steps: [
             {
                 title: '250g',
@@ -60,6 +63,7 @@ export const store = [
     },
     {
         title: 'Want us to grind them?',
+        id: 4,
         steps: [
             {
                 title: 'Wholebean',
@@ -79,6 +83,7 @@ export const store = [
     },
     {
         title: 'How often should we deliver?',
+        id: 5,
         steps: [
             {
                 title: 'Every week',

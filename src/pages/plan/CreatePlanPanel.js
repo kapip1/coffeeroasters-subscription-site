@@ -32,60 +32,68 @@ const PlanContent = styled.div`
     font-weight: 700;
     width: 240px;
     padding: 20px 10px;
-    opacity: ${({ step, stepNumber }) => (step === stepNumber ? 1 : 0.3)};
-    ${({ disable }) =>
-        disable
-            ? null
+    opacity: ${({ active, data }) => (active ? '1' : '0.4')};
+    ${({ data }) =>
+        data.block
+            ? css`
+                  cursor: not-allowed;
+              `
             : css`
                   cursor: pointer;
                   &:hover {
                       opacity: 1;
                   }
-              `}
+              `};
 `;
 
 function CreatePlanPanel() {
-    const { handlePanelClick, step, disable } = useContext(AppContext);
+    const {
+        setOpen,
+        currentStep,
+        preferences,
+        bean,
+        quality,
+        grind,
+        deliveries,
+    } = useContext(AppContext);
     return (
         <CreatePlanPanelWrapper>
             <PlanContent
-                onClick={() => handlePanelClick(1)}
-                stepNumber={1}
-                step={step}
+                onClick={() => setOpen(1)}
+                active={currentStep === 1}
+                data={preferences}
             >
                 <PanelNumber first>01</PanelNumber>
                 <PanelText>Preferences</PanelText>
             </PlanContent>
             <PlanContent
-                onClick={() => handlePanelClick(2)}
-                stepNumber={2}
-                step={step}
+                onClick={() => setOpen(2)}
+                active={currentStep === 2}
+                data={bean}
             >
                 <PanelNumber>02</PanelNumber>
                 <PanelText>Bean Type</PanelText>
             </PlanContent>
             <PlanContent
-                onClick={() => handlePanelClick(3)}
-                stepNumber={3}
-                step={step}
+                onClick={() => setOpen(3)}
+                active={currentStep === 3}
+                data={quality}
             >
                 <PanelNumber>03</PanelNumber>
                 <PanelText>Quality</PanelText>
             </PlanContent>
             <PlanContent
-                onClick={() => handlePanelClick(4)}
-                stepNumber={4}
-                step={step}
-                disable={disable}
+                onClick={() => setOpen(4)}
+                active={currentStep === 4}
+                data={grind}
             >
                 <PanelNumber>04</PanelNumber>
                 <PanelText>Grind Option</PanelText>
             </PlanContent>
             <PlanContent
-                last
-                onClick={() => handlePanelClick(5)}
-                stepNumber={5}
-                step={step}
+                onClick={() => setOpen(5)}
+                active={currentStep === 5}
+                data={deliveries}
             >
                 <PanelNumber>05</PanelNumber>
                 <PanelText>Deliveries</PanelText>

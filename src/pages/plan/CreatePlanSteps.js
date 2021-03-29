@@ -1,26 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import styled from 'styled-components';
 
 import { AppContext } from '../../AppContext';
 import { store } from './store';
 import PlanStep from './PlanStep';
+import Summary from './Summary';
 
 const CreatePlanStepsWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    width: 730px;
 `;
 
 function CreatePlanSteps() {
-    const { step } = useContext(AppContext);
+    const { preferences, bean, quality, grind, deliveries } = useContext(
+        AppContext
+    );
+
+    useEffect(() => {}, []);
 
     return (
         <CreatePlanStepsWrapper>
-            <PlanStep store={store[0]} />
-            <PlanStep store={store[1]} />
-            <PlanStep store={store[2]} />
-            <PlanStep store={store[3]} />
-            <PlanStep store={store[4]} />
+            <PlanStep store={store[0]} data={preferences} />
+            <PlanStep store={store[1]} data={bean} />
+            <PlanStep store={store[2]} data={quality} />
+            <PlanStep store={store[3]} data={grind} />
+            <PlanStep store={store[4]} data={deliveries} />
+            <Summary />
         </CreatePlanStepsWrapper>
     );
 }
