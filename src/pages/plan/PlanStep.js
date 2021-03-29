@@ -18,11 +18,14 @@ const PlanStepInfo = styled.div`
     align-items: center;
     width: 100%;
     & div {
-        transform: rotate(${({ data }) => (data.open ? '180deg' : '0deg')});
+        transform: rotate(
+            ${({ data }) => (data.open && !data.block ? '180deg' : '0deg')}
+        );
         @media (max-width: 750px) {
-            transform: rotate(180deg);
+            transform: rotate(${({ data }) => (data.block ? '0' : '180deg')});
         }
     }
+    opacity: ${({ data }) => (data.block ? '0.2' : '1')};
     @media (max-width: 750px) {
         width: 325px;
         margin: auto;
@@ -51,7 +54,7 @@ const PlanStepSection = styled.div`
     justify-content: space-between;
     margin-top: 30px;
     @media (max-width: 750px) {
-        display: flex;
+        display: ${({ data }) => (data.block ? 'none' : 'flex')};
         flex-direction: column;
         align-items: center;
         text-align: start;
@@ -100,13 +103,12 @@ const StepText = styled.p`
 function PlanStep({ store, data }) {
     const [option, setOption] = useState(0);
 
-    const handleStepClick = (option, id) => {
-        getOption(option, id);
+    const handleStepClick = (title, option, id) => {
+        getOption(title, option, id);
         setOption(option);
     };
 
     const { getOption } = useContext(AppContext);
-    console.log(option, 'opcja');
     return (
         <PlanStepWrapper>
             <PlanStepInfo data={data}>
@@ -117,7 +119,9 @@ function PlanStep({ store, data }) {
                 {store.steps.map((step, i) => (
                     <Step
                         key={step.title}
-                        onClick={() => handleStepClick(i + 1, store.id)}
+                        onClick={() =>
+                            handleStepClick(step.title, i + 1, store.id)
+                        }
                         option={option}
                         optionNumber={i + 1}
                     >

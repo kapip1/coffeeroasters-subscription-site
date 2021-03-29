@@ -14,7 +14,7 @@ const CreatePlanStepsWrapper = styled.div`
 `;
 
 function CreatePlanSteps() {
-    const { preferences, bean, quality, grind, deliveries } = useContext(
+    const { preferences, bean, quantity, grind, deliveries } = useContext(
         AppContext
     );
 
@@ -24,7 +24,7 @@ function CreatePlanSteps() {
         <CreatePlanStepsWrapper>
             <PlanStep store={store[0]} data={preferences} />
             <PlanStep store={store[1]} data={bean} />
-            <PlanStep store={store[2]} data={quality} />
+            <PlanStep store={store[2]} data={quantity} />
             <PlanStep store={store[3]} data={grind} />
             <PlanStep store={store[4]} data={deliveries} />
             <Summary />

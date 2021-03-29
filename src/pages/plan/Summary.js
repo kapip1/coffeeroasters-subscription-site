@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { AppContext } from '../../AppContext';
 import { HeroButton } from '../home/Header';
+import SummaryText from './SummaryText';
 
 const SummaryWrapper = styled.div`
     display: flex;
@@ -17,6 +19,7 @@ const SummaryContent = styled.div`
     display: flex;
     flex-direction: column;
     padding: 40px;
+    color: #fff;
     background-color: hsl(215, 19%, 25%);
     border-radius: 12px;
     @media (max-width: 750px) {
@@ -29,29 +32,40 @@ const SummaryTitle = styled.span`
     color: hsl(215, 5%, 54%);
 `;
 
-const SummaryText = styled.p`
-    margin-top: 15px;
-    font-weight: 700;
-    color: #fff;
-    font-family: 'Fraunces', serif;
-    font-size: 2.4rem;
-`;
-
 const SummaryButton = styled(HeroButton)`
+    ${({ disabled }) =>
+        disabled
+            ? css`
+                  background-color: hsl(215, 5%, 54%);
+                  opacity: 0.3;
+                  cursor: not-allowed;
+                  &:hover {
+                      background-color: hsl(215, 15%, 54%);
+                  }
+              `
+            : null}
     color: hsl(43, 78%, 98%);
 `;
 
 function Summary() {
+    const { handleIsAlert, calulateSubscription, isDisable } = useContext(
+        AppContext
+    );
+
+    const validateSummaryClick = () => {
+        calulateSubscription();
+        handleIsAlert();
+    };
+
     return (
         <SummaryWrapper>
             <SummaryContent>
-                <SummaryTitle>order summary</SummaryTitle>
-                <SummaryText>
-                    “I drink my coffee using Capsules, with a _____ type of
-                    bean. _____ , sent to me _____.”
-                </SummaryText>
+                <SummaryTitle>Order summary</SummaryTitle>
+                <SummaryText />
             </SummaryContent>
-            <SummaryButton>Create my plan!</SummaryButton>
+            <SummaryButton onClick={validateSummaryClick} disabled={isDisable}>
+                Create my plan!
+            </SummaryButton>
         </SummaryWrapper>
     );
 }

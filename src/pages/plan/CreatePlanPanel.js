@@ -32,11 +32,12 @@ const PlanContent = styled.div`
     font-weight: 700;
     width: 240px;
     padding: 20px 10px;
-    opacity: ${({ active, data }) => (active ? '1' : '0.4')};
+    opacity: ${({ active, data }) =>
+        active && data.block === false ? '1' : '0.4'};
     ${({ data }) =>
         data.block
             ? css`
-                  cursor: not-allowed;
+                  pointer-events: none;
               `
             : css`
                   cursor: pointer;
@@ -52,7 +53,7 @@ function CreatePlanPanel() {
         currentStep,
         preferences,
         bean,
-        quality,
+        quantity,
         grind,
         deliveries,
     } = useContext(AppContext);
@@ -77,10 +78,10 @@ function CreatePlanPanel() {
             <PlanContent
                 onClick={() => setOpen(3)}
                 active={currentStep === 3}
-                data={quality}
+                data={quantity}
             >
                 <PanelNumber>03</PanelNumber>
-                <PanelText>Quality</PanelText>
+                <PanelText>Quantity</PanelText>
             </PlanContent>
             <PlanContent
                 onClick={() => setOpen(4)}

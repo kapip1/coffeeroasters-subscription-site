@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Hero from './Hero';
-import Footer from '../../components/Footer';
 import Commitment from './Commitment';
 import Quality from './Quality';
 import Headquarters from './Headquarters';
@@ -17,7 +16,6 @@ function About() {
                 <Quality />
                 <Headquarters />
             </main>
-            <Footer />
         </>
     );
 }

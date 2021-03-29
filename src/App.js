@@ -10,6 +10,7 @@ import GlobalStyle from './styles/GlobalStyle';
 import Plan from './pages/plan/Plan';
 import Nav from './components/Nav';
 import Home from './pages/home/Home';
+import Footer from './components/Footer';
 
 const Wrapper = styled.div`
     display: flex;
@@ -38,6 +39,7 @@ function App() {
                     <Route path='/aboutus' component={About} />
                     <Route path='/create-your-plan' component={Plan} />
                 </Switch>
+                <Footer />
             </Wrapper>
         </Router>
     );

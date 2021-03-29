@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Header from './Header';
 import Main from './Main';
-import Footer from '../../components/Footer';
 
 const HomeWrapper = styled.div`
     display: flex;
@@ -16,7 +15,6 @@ function Home() {
         <HomeWrapper>
             <Header />
             <Main />
-            <Footer />
         </HomeWrapper>
     );
 }
