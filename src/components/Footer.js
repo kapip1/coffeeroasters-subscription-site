@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { AppContext } from '../AppContext';
 import logoFooter from '../assets/logoFooter.svg';
 
 import facebookIcon from '../assets/shared/desktop/icon-facebook.svg';
@@ -71,20 +72,22 @@ const FooterNavList = styled.ul`
 `;
 
 function Footer() {
+    const { resetOptions } = useContext(AppContext);
+
     return (
         <FooterWrapper>
-            <Link to='/'>
+            <Link to='/' onClick={resetOptions}>
                 <FooterLogo />
             </Link>
             <FooterNav>
                 <FooterNavList>
-                    <li>
+                    <li onClick={resetOptions}>
                         <Link to='/'>home</Link>
                     </li>
-                    <li>
+                    <li onClick={resetOptions}>
                         <Link to='/aboutus'>about us</Link>
                     </li>
-                    <li>
+                    <li onClick={resetOptions}>
                         <Link to='/create-your-plan'>create your plan</Link>
                     </li>
                 </FooterNavList>

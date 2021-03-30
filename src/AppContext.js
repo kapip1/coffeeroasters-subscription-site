@@ -167,6 +167,18 @@ const AppProvider = ({ children }) => {
                 break;
         }
     };
+    const resetOptions = () => {
+        setPreferences({ open: true, option: 0, block: false, name: '' });
+        setBean({ open: false, option: 0, block: false, name: '' });
+        setQuantity({ open: false, option: 0, block: false, name: '' });
+        setGrind({ open: false, option: 0, block: false, name: '' });
+        setDeliveries({ open: false, option: 0, block: false, name: '' });
+        setCurrentStep(1);
+        setIsDisable(true);
+        setPrice(0);
+        setIsAlert(false);
+    };
+
     useEffect(() => {
         if (grind.block) {
             if (
@@ -219,6 +231,7 @@ const AppProvider = ({ children }) => {
                 calulateSubscription,
                 price,
                 isDisable,
+                resetOptions,
             }}
         >
             {children}

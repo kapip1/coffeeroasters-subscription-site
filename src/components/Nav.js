@@ -103,25 +103,34 @@ const Burger = styled.button`
 `;
 
 function Nav() {
-    const { isOpen, handleBurgerClick, handleNavClick } = useContext(
-        AppContext
-    );
+    const {
+        isOpen,
+        handleBurgerClick,
+        handleNavClick,
+        resetOptions,
+    } = useContext(AppContext);
 
     return (
         <NavWrapper>
-            <Link to='/'>
+            <Link to='/' onClick={resetOptions}>
                 <Logo onClick={handleNavClick} isOpen={isOpen} />
             </Link>
             <Burger isOpen={isOpen} onClick={handleBurgerClick} />
             <NavList isOpen={isOpen}>
                 <li onClick={handleNavClick}>
-                    <Link to='/'>home</Link>
+                    <Link to='/' onClick={resetOptions}>
+                        home
+                    </Link>
                 </li>
                 <li onClick={handleNavClick}>
-                    <Link to='/aboutus'>about us</Link>
+                    <Link to='/aboutus' onClick={resetOptions}>
+                        about us
+                    </Link>
                 </li>
                 <li onClick={handleNavClick}>
-                    <Link to='/create-your-plan'>create your plan</Link>
+                    <Link to='/create-your-plan' onClick={resetOptions}>
+                        create your plan
+                    </Link>
                 </li>
             </NavList>
         </NavWrapper>
