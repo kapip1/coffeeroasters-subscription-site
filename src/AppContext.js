@@ -168,25 +168,28 @@ const AppProvider = ({ children }) => {
         }
     };
     useEffect(() => {
-        console.log('siema');
         if (grind.block) {
             if (
-                (preferences.option &&
-                    bean.option &&
-                    quantity.option &&
-                    deliveries.option) === true
+                preferences.option &&
+                bean.option &&
+                quantity.option &&
+                deliveries.option
             ) {
                 setIsDisable(false);
+            } else {
+                setIsDisable(true);
             }
         } else if (!grind.block) {
             if (
-                (preferences.option &&
-                    bean.option &&
-                    quantity.option &&
-                    deliveries.option &&
-                    grind.option) === true
+                preferences.option &&
+                bean.option &&
+                quantity.option &&
+                deliveries.option &&
+                grind.option
             ) {
                 setIsDisable(false);
+            } else {
+                setIsDisable(true);
             }
         }
     }, [
